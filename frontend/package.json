@@ -8,6 +8,7 @@
     "@mui/material": "^5.11.10",
     "axios": "^1.2.6",
     "customize-cra": "^1.0.0",
+    "dotenv-webpack": "^8.0.1",
     "querystring": "^0.2.1",
     "react": "^18.2.0",
     "react-app-rewired": "^2.2.1",

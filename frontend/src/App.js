@@ -9,7 +9,6 @@ import { Button, Card, LinearProgress } from '@mui/material';
 var querystring = require('querystring');
 
 import RTL from './rtl';
-
 export function App() {
   store.useRerenderIfChange(() => [store.page, store.user]);
   async function getUserFromLocalStorage() {
@@ -17,7 +16,7 @@ export function App() {
     store.updateStore();
     var auth = localStorage.auth;
     if (auth) {
-      var res = await myAxios()('https://api-ivri.boti.bot/user?auth=' + auth);
+      var res = await myAxios()((process.env.REACT_APP_BACKEND || 'https://api-ivri.boti.bot') + '/user?auth=' + auth);
       store.user = await res.data;
       store.calendarId=store.user.calendars[0].id
       store.page = "one-calendar";

@@ -35,7 +35,7 @@ export default function OneCalendar(){
     }
     store.getCurrentCalendar().dates=draftList
     set_saving(true)
-    var res=await myAxios().post('https://api-ivri.boti.bot/save-calendar',{
+    var res=await myAxios().post((process.env.REACT_APP_BACKEND || 'https://api-ivri.boti.bot') + '/save-calendar',{
       calendarId:store.calendarId,
       name:store.getCurrentCalendar().name,
       dates:store.getCurrentCalendar().dates

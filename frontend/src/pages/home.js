@@ -8,7 +8,7 @@ export default function Home(){
       alert('מטעמי בטיחות, לא ניתן להתחבר דרף דפדפן זה. עליך לפתוח את הדף בספארי או בכרום. אפשר גם בפיירפוקס')
       return
     }
-    window.open('https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code&client_id=108778709679-mvnp8sesar8f16o0a99t88ptjbjkbba3.apps.googleusercontent.com&scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/calendar.app.created&redirect_uri=https://api-ivri.boti.bot/callback_oauth&state=' + encodeURIComponent(window.location.origin + window.location.pathname),'_top')
+    window.open('https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code&client_id=108778709679-mvnp8sesar8f16o0a99t88ptjbjkbba3.apps.googleusercontent.com&scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/calendar.app.created&redirect_uri=' + (process.env.REACT_APP_BACKEND || 'https://api-ivri.boti.bot') + '/callback_oauth&state=' + encodeURIComponent(window.location.origin + window.location.pathname),'_top')
   }
   return <div>
     <center>
