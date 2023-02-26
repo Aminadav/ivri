@@ -1,0 +1,6 @@
+tunnel: ivri-prod #f649879b-09a0-4c45-9fb4-5e145612dba4
+ingress:
+  - hostname: api-ivri.boti.bot
+    service: http://localhost:3943
+  - service: http://localhost:3943
+

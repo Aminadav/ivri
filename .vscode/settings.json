@@ -1,0 +1,19 @@
+{
+  // "remote.autoForwardPorts": false,
+  "remote.portsAttributes": {
+  
+    "443": {
+      "protocol": "https"
+    },
+    "8300":{
+      "onAutoForward": "ignore"
+    },
+    "8443": {
+      "protocol": "https"
+    }
+  },
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#333",
+    "titleBar.activeForeground": "#fff"
+  }
+}
