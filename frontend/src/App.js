@@ -54,7 +54,7 @@ export function App() {
     <div css={`padding:10px;`}>
       <h3>עזרה תמיכה וקהילה</h3>
       <div>
-        השירות הוא ללא תשלום, ונוצר באהבה ללוח העברי שלנו. תהנו!
+        השירות הוא קוד פתוח ללא תשלום, ונוצר באהבה ללוח העברי שלנו. תהנו!
         <br/>
     רוצים לדעת עדכונים לשירות? יש לכם שאלות הצעות ורעיונות?
     <br/>
@@ -62,6 +62,8 @@ export function App() {
     <br/>
     <Button onClick={()=>window.open('https://chat.whatsapp.com/IDkUybkQL4zBsH6T8Oz13a')}>הצטרפות לקבוצת הקהילה לשאלות עזרה תמיכה והצעות</Button>
       <br/>
+      <br/>
+    <a href="https://github.com/aminadav/ivri">קישור לפרוייקט בגיטהאב</a>
     </div>
     </div>
     </Card>
