@@ -62,8 +62,6 @@ export function App() {
     <br/>
     <Button onClick={()=>window.open('https://chat.whatsapp.com/IDkUybkQL4zBsH6T8Oz13a')}>הצטרפות לקבוצת הקהילה לשאלות עזרה תמיכה והצעות</Button>
       <br/>
-      <br/>
-    <a href="https://github.com/aminadav/ivri">קישור לפרוייקט בגיטהאב</a>
     </div>
     </div>
     </Card>

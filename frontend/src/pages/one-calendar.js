@@ -35,7 +35,7 @@ export default function OneCalendar(){
     }
     store.getCurrentCalendar().dates=draftList
     set_saving(true)
-    var res=await myAxios().post((process.env.REACT_APP_BACKEND || 'https://api-ivri.boti.bot') + '/save-calendar',{
+    var res=await myAxios().post((process.env.REACT_APP_BACKEND || 'https://api-ivri.boti.bot') + '/save-calendar?is_full_day=' + is_full_day,{
       calendarId:store.calendarId,
       name:store.getCurrentCalendar().name,
       dates:store.getCurrentCalendar().dates
@@ -48,6 +48,8 @@ export default function OneCalendar(){
     }
     
   }
+
+  var [is_full_day,set_is_full_day]=useState(false)
 
   return <div css={``}>
     {/* <a onClick={()=>store.navigate('my-calendars')}>חזרה</a> */}
@@ -72,7 +74,11 @@ export default function OneCalendar(){
     value={draftList} onChange={e=>setDraftList(e.target.value)}/>
     <br/>
     * לא לדאוג אפשר בכל עת לחזור לדף זה ולעדכן את הרשימה. הרשימה נמצאת פה ומחכה לכם להוספת אירועים.
-    <br/>
+    <br/><br/>
+    <input type="radio" id="7morning" checked={!is_full_day} onChange={()=>set_is_full_day(false)}/><label htmlFor="7morning">בשעה שבע בבוקר</label>
+    &nbsp;&nbsp;
+    <input type="radio" id="allday" checked={is_full_day} onChange={()=>set_is_full_day(true)}/><label htmlFor="allday">כל היום כולו</label>
+    <br/><br/>
     <Button onClick={clickReset}>איפוס רשימה</Button>
     <br/>
     {!saving && <Button variant="contained" onClick={clickSave}>שמירה</Button>}

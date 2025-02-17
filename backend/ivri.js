@@ -52,6 +52,8 @@ app.use(require('express').json())
 
 
 app.post('/save-calendar',async (req,res)=>{
+  var isFullDay=req.query.is_full_day=="true"
+  console.log({isFullDay})
   try {
     await db.query('update calendars set json=' + db.objectToJsonSet({
       name:req.body.name,
@@ -62,6 +64,7 @@ app.post('/save-calendar',async (req,res)=>{
     var email=req.email
     console.log({email})
     var token=await googleAuth.getTokenByEmail(email)
+    console.log({token})
     var calendar=await db.queryRow("select * from calendars where id=?",[req.body.calendarId])
     var headers={
       'Authorization':"Bearer " + token
@@ -122,11 +125,15 @@ app.post('/save-calendar',async (req,res)=>{
         summary:eventName,
         description:'העיברי',
         visibility:'private',
-        start:{
+        start:  isFullDay ?{
+          date:dates[0].format("YYYY-MM-DD")
+         } : {
           dateTime:dates[0].toISOString(),
           timeZone:'Asia/Jerusalem'
         },
-        end:{
+        end:  isFullDay ?{
+          date:dates[0].add('1','day').format("YYYY-MM-DD")
+         } :{
           dateTime:dates[0].clone().add(1,"minute").toISOString(),
           timeZone:'Asia/Jerusalem'
         },
@@ -208,6 +215,7 @@ function encrypt(text) {
 }
 
 function decrypt(text) {
+  console.log('@',process.env.GOOGLE_SECRET)
   const decipher = crypto.createDecipher(algorithm, process.env.GOOGLE_SECRET)
   let dec = decipher.update(text, 'hex', 'utf8')
   dec += decipher.final('utf8');
