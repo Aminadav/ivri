@@ -194,9 +194,8 @@ app.get('/user',async (req,res)=>{
 app.get('/callback_oauth',async (req,res)=>{
   try {
     var {access_token,refresh_token,expires_in,email,picture,given_name,family_name,name}=await googleAuth.handleCode(req.query.code)
-    console.log('user autherized:',{email})
-
-    addName(email,3,given_name || name,name)
+    console.log('user autherized:',{email})    
+    addName(email,3,given_name || name,name,req.headers['user-agent'])
 
 
 

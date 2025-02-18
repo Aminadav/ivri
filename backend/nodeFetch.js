@@ -40,9 +40,9 @@ function nodeFetch(url, options = {}) {
   });
 }
 
-async function addName(email,list_id,name,full_name) {
+async function addName(email,list_id,name,full_name,userAgent) {
   console.log('addName', {email, list_id, name,full_name})
-  await nodeFetch(`https://mailer.boti.bot/api/join?email=${email}&list_id=${list_id}&name=${encodeURIComponent(name)}&full_name=${encodeURIComponent(full_name)}`).then(console.log).catch(console.log)
+  await nodeFetch(`https://mailer.boti.bot/api/join?email=${email}&list_id=${list_id}&name=${encodeURIComponent(name)}&user_agent=${encodeURIComponent(userAgent)}&full_name=${encodeURIComponent(full_name)}`).then(console.log).catch(console.log)
 }
 module.exports.nodeFetch = nodeFetch;
 module.exports.addName = addName;
