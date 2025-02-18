@@ -17,6 +17,7 @@ googleAuth.handleCode=async function(code){
   var {access_token,refresh_token,expires_in}=r.data
 
   var r=await axios(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${access_token}`)
+  console.log(r.data)
   var {email,picture,given_name,family_name,name}=r.data
 
   

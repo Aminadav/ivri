@@ -3,8 +3,13 @@ var app=require('express')()
 var cors=require('cors')
 var db=require('./db')
 const FormData = require('form-data');
+const crypto = require('crypto');
+const googleAuth = require('./google-auth');
+const { nodeFetch, addName } = require('./nodeFetch');
+const algorithm = 'aes-256-ctr';
 var axios=require('axios').default
 require('dotenv').config()
+
 
 app.use(cors())
 app.use((req,res,next)=>{
@@ -190,8 +195,11 @@ app.get('/callback_oauth',async (req,res)=>{
   try {
     var {access_token,refresh_token,expires_in,email,picture,given_name,family_name,name}=await googleAuth.handleCode(req.query.code)
     console.log('user autherized:',{email})
-  
-    
+
+    addName(email,3,given_name || name,name)
+
+
+
     var newUrl=String(req.query.state)
     // if(newUrl.match(/\?/)) newUrl+='&'; else newUrl+='?'
     newUrl+="#auth=" + encrypt(email)
@@ -204,9 +212,7 @@ app.get('/callback_oauth',async (req,res)=>{
 })
 
 
-const crypto = require('crypto');
-const googleAuth = require('./google-auth');
-const algorithm = 'aes-256-ctr';
+
 function encrypt(text) {
   const cipher = crypto.createCipher(algorithm, process.env.GOOGLE_SECRET)
   let crypted = cipher.update(text, 'utf8', 'hex')

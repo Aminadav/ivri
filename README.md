@@ -46,3 +46,9 @@ You can get this detailes by creating a OAuth client in Google Cloud Console
 
 # Link:
 
+
+
+# Deploy
+
+go to server, /home/ivri - git pull. pm2 reload ivri
+The frontend auto deploy on push by Cloudflare
