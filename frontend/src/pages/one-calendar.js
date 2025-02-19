@@ -23,7 +23,7 @@ export default function OneCalendar(){
   }
   var [saving,set_saving]=useState(false)
   async function clickSave(){
-    var reg =new RegExp("^(?<yom>[א-ל'\"]{1,3})[ \n]ב?(?<hodesh>(תשרי|חשון|חשוון|כסלו|כסליו|טבת|שבט|אדר|ניסן|איר|אייר|סיוון|סיון|תמוז|אב|אלול)) (?<message>.{2,50})$")
+    var reg =new RegExp("^(?<yom>[א-ל'\"]{1,3})[ \n]ב?(?<hodesh>(תשרי|חשון|חשוון|כסלו|כסליו|טבת|שבט|אדר|ניסן|איר|אייר|סיוון|סיון|תמוז|אב|אלול)) (?<message>.{2,200})$")
     var lines=draftList.trim().split('\n')
     for(var i=0;i<lines.length;i++) {
       var line=lines[i]
