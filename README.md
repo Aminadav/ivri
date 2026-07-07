@@ -52,3 +52,5 @@ You can get this detailes by creating a OAuth client in Google Cloud Console
 
 go to server, /home/ivri - git pull. pm2 reload ivri
 The frontend auto deploy on push by Cloudflare
+
+[Coltonos.com - Build your WhatsApp assistant in minutes](https://coltonos.com)
