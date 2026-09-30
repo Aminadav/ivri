@@ -60,9 +60,9 @@ export function App() {
         <br/>
     רוצים לדעת עדכונים לשירות? יש לכם שאלות הצעות ורעיונות?
     <br/>
-    <Button onClick={()=>window.open('https://chat.whatsapp.com/HUjmJ24L0AgCDCclPyVjkD')}>הצטרפות לקבוצת החדשות  - מנהלים בלבד מפרסמים</Button>
+    <Button onClick={()=>window.open('https://github.com/Aminadav/ivri')}>GitHub</Button>
     <br/>
-    <Button onClick={()=>window.open('https://chat.whatsapp.com/IDkUybkQL4zBsH6T8Oz13a')}>הצטרפות לקבוצת הקהילה לשאלות עזרה תמיכה והצעות</Button>
+    <Button onClick={()=>window.open('https://github.com/Aminadav/ivri/issues/new')}>לשאלות עזרה תמיכה והצעות</Button>
       <br/>
     </div>
     </div>
