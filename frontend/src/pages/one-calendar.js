@@ -1,8 +1,23 @@
-import { useState, useLocalStorage } from "react"
+import { useState } from "react"
 import store from "../store"
 import axios from 'axios'
 import myAxios from "../myAxios"
 import { Button, CircularProgress, TextareaAutosize, TextField } from "@mui/material"
+
+function useLocalStorage(key, defaultValue) {
+  var [value, setValue] = useState(() => {
+    var storedValue = localStorage.getItem(key)
+    return storedValue === null ? defaultValue : storedValue === 'true'
+  })
+
+  function setStoredValue(nextValue) {
+    localStorage.setItem(key, String(nextValue))
+    setValue(nextValue)
+  }
+
+  return [value, setStoredValue]
+}
+
 export default function OneCalendar(){
   var [draftList,setDraftList]=useState(store.getCurrentCalendar().dates || '')
   store.useRerenderIfChange(()=>[store.getCurrentCalendar])
@@ -49,7 +64,7 @@ export default function OneCalendar(){
     
   }
 
-  var [is_full_day,set_is_full_day]=useLocalStorage(false)
+  var [is_full_day,set_is_full_day]=useLocalStorage('ivri.is_full_day', false)
 
   return <div css={``}>
     {/* <a onClick={()=>store.navigate('my-calendars')}>חזרה</a> */}
