@@ -118,8 +118,12 @@ app.post('/save-calendar',async (req,res)=>{
     for(var hebdate of hebdates) {
       var dates=[]
       var eventName=hebdate.split(' ').slice(2).join(' ')
-      var hebDateName=hebdate.split(' ').slice(0,2).join(' ')
-      var H=hebcal.HDate(hebDateName)
+      var hebDateName=hebdate.split(' ').slice(0,2)
+      // trim ב from start
+      if (hebDateName[1][0] == 'ב') {
+        hebDateName[1] = hebDateName[1].substring(1);
+      }
+      var H=hebcal.HDate(hebDateName.join(' '))
       for(var i=0;i<=50;i++) {
         dates.push(require('moment-timezone').tz(H.greg(),'Israel').hour(7).minutes(0))
         H.setFullYear(H.getFullYear()+1)
